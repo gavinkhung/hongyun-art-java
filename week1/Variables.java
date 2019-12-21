@@ -19,5 +19,10 @@ public class Variables
 		//y = "5";
 		
 		System.out.println(y);
+		
+		boolean choice = true;
+		//choice = false;
+		
+		System.out.println(choice);
 	}
 }
