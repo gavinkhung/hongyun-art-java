@@ -4,7 +4,7 @@ public class IfElse
 	{
 		IfElse kb = new IfElse();
 		kb.ifElse1();
-		//kb.ifElse2();
+		kb.ifElse2();
 	}
 	
 	public void ifElse1()
