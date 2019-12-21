@@ -23,30 +23,30 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class BoardPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener {
-	
+
 	private JButton saveButton, undoButton, redoButton;
 	private JTextField textField;
 	private JPanel canvas;
-	
+
 	private ArrayList<Points> pointsList;
 	private ArrayList<Points> removedPointsList;
 	private Points currentPoint;
-	
+
 	private Color burshColor;
 	private int transparency;
 	private float brushThickness;
-	
+
 	public BoardPanel() {
 		setLayout(new BorderLayout());
-		
+
 		pointsList = new ArrayList<Points>();
 		removedPointsList = new ArrayList<Points>();
-		
+
 		burshColor = Color.black;
 		transparency = 255;
 		brushThickness = 5;
 		currentPoint = new Points(transparency, brushThickness, burshColor);
-		
+
 		JPanel savePanel = new JPanel();
 		savePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		saveButton = new JButton("Save");
@@ -64,10 +64,10 @@ public class BoardPanel extends JPanel implements ActionListener, MouseListener,
 		savePanel.add(textField);
 		savePanel.add(undoButton);
 		savePanel.add(redoButton);
-		
+
 		JPanel optionsPanel = new JPanel();
 		optionsPanel.setLayout(new GridLayout(2, 1));
-		
+
 		JPanel colorsPanel = new JPanel();
 		colorsPanel.setLayout(new GridLayout(Constants.colors.length/2, 2));
 		for(Color currentColor: Constants.colors) {
@@ -81,7 +81,7 @@ public class BoardPanel extends JPanel implements ActionListener, MouseListener,
 				public void actionPerformed(ActionEvent e) {
 					burshColor = button.getBackground();
 				}
-				
+
 			});
 			colorsPanel.add(button);
 		}
@@ -102,13 +102,13 @@ public class BoardPanel extends JPanel implements ActionListener, MouseListener,
 	        }
 	    });
 		sizePanel.add(new JLabel("transparency", JLabel.CENTER));
-		sizePanel.add(transparencySlider); 
+		sizePanel.add(transparencySlider);
 		sizePanel.add(new JLabel("brushThickness", JLabel.CENTER));
 		sizePanel.add(brushThicknessSlider);
-		
+
 		optionsPanel.add(colorsPanel);
 		optionsPanel.add(sizePanel);
-		
+
 		canvas = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -116,14 +116,14 @@ public class BoardPanel extends JPanel implements ActionListener, MouseListener,
 				for(Points current: pointsList) {
 					current.draw(g);
 				}
-				
+
 			}
 		};
 		canvas.setBackground(Color.white);
 		canvas.setFocusable(true);
 		canvas.addMouseListener(this);
 		canvas.addMouseMotionListener(this);
-		
+
 		add(savePanel, BorderLayout.NORTH);
 		add(optionsPanel, BorderLayout.WEST);
 		add(canvas, BorderLayout.CENTER);
@@ -168,6 +168,12 @@ public class BoardPanel extends JPanel implements ActionListener, MouseListener,
 		if(command.equals(saveButton.getActionCommand())) {
 			BufferedImage img = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
 			canvas.paint(img.getGraphics());
+			
+			File dir = new File(Constants.projectDirectory);
+			if(!dir.exists()){
+				dir.mkdir();
+			}
+
 			File outputfile = new File(Constants.projectDirectory+textField.getText()+".png");
 			try {
 				ImageIO.write(img, "png", outputfile);
@@ -187,5 +193,5 @@ public class BoardPanel extends JPanel implements ActionListener, MouseListener,
 			repaint();
 		}
 	}
-	
+
 }
