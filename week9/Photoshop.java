@@ -1,5 +1,3 @@
-package photoshop;
-
 import javax.swing.JFrame;
 
 public class Photoshop {
