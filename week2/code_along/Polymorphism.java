@@ -3,12 +3,12 @@ public class Polymorphism {
     public static void main(String [] args){
         Parent parent = new Parent("gavin", 16, 1.6);
 
-        Son son = new Son("car", "boy", 16, 1.6);
+        Child child = new Child("car", "boy", 16, 1.6);
 
         System.out.println(person.getHeight());
         System.out.println(father.getHeight());
 
-        Parent ps = new Son("car", "boy", 16, 1.6);
+        Parent ps = new Child("car", "boy", 16, 1.6);
 
         //System.out.println(ps.getToy());
         System.out.println(ps.getFirstName());
