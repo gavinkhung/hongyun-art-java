@@ -30,19 +30,50 @@ public class Drawing {
 }
 class DrawingPanel extends JPanel {
 
+	private Color[] colors;
+
+	public DrawingPanel(){
+		colors = new Color[]{
+			Color.RED, 
+			Color.PINK, 
+			Color.ORANGE, 
+			Color.YELLOW, 
+			Color.GREEN, 
+			Color.BLUE, 
+			Color.CYAN, 
+			Color.BLACK, 
+			Color.GRAY
+		};
+	}
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
-        g.setColor(Color.red);
-        g.drawRect(100, 100, 100, 100);
+		
+		for(int i=0; i<colors.length; i+=1){
+			g.setColor(colors[i]);
+        	g.drawRect(150+(i*100), 100, 100, 100);
+		}
+
+		for(int i=0; i<colors.length; i+=1){
+			g.setColor(colors[i]);
+        	g.fillRect(150+(i*100), 200, 100, 100);
+		}
+
+		for(int i=0; i<colors.length; i+=1){
+			g.setColor(colors[i]);
+        	g.drawOval(150+(i*100), 300, 100, 100);
+		}
+
+		for(int i=0; i<colors.length; i+=1){
+			g.setColor(colors[i]);
+        	g.drawOval(150+(i*100), 400, 100, 100);
+		}
 
         g.drawString("hello", 100, 100);
 
         g.setColor(Color.blue);
         g.drawLine(200, 200, 300, 300);
 
-        g.setColor(Color.black);
-        g.drawOval(400, 400, 100, 100);
     }
 
 }

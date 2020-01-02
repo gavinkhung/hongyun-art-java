@@ -1,10 +1,10 @@
 import java.io.File;
 import java.util.Scanner;
 
-public class FileReading {
+public class UserInput {
 	
 	public static void main(String[] args){
-		new FileReading().read();
+		new UserInput().read();
 	}
 	
 	public void read(){

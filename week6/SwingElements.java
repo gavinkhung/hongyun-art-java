@@ -10,7 +10,7 @@ public class SwingElements {
 	
 	public static final int WIDTH = 1200, HEIGHT = 800;
 	
-	public SwingElements(String name) {
+	public SwingElements(String  name) {
 		JFrame frame = new JFrame(name);
 		frame.setSize(WIDTH, HEIGHT);
 		frame.setResizable(false);
