@@ -14,7 +14,7 @@ public class GUI {
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-        Drawing panel = new Drawing();
+		GUIPanel panel = new GUIPanel();
         
         frame.add(panel);
         
@@ -28,7 +28,7 @@ public class GUI {
 		new GUI("gui");
 	}
 }
-class Drawing extends JPanel {
+class GUIPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
