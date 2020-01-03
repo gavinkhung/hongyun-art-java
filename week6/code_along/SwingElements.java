@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 public class SwingElements {
 	
-	public static final int WIDTH = 1200, HEIGHT = 800;
+	public static final int WIDTH = 600, HEIGHT = 400;
 	
 	public SwingElements(String  name) {
 		JFrame frame = new JFrame(name);

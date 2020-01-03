@@ -4,10 +4,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
-import java.net.ServerSocket;
 
-public class Server {
-	
+public class GameClient {
+
 	private Scanner scanner;
 	private Socket socket;
 	private BufferedReader bufferedReader;
@@ -16,24 +15,26 @@ public class Server {
 	String echo;
 	String response;
 	
-	public Server() {
+	public GameClient() {
 		scanner = new Scanner(System.in);
 		try {
-			ServerSocket serverSocket = new ServerSocket(port);
-			System.out.println("Server open");
-			
-			socket = serverSocket.accept();
-			
-			System.out.println("New connection");
+			socket = new Socket("localhost", port);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			bufferedReader = new BufferedReader(
-					new InputStreamReader(socket.getInputStream()));
-			printWriter = new PrintWriter(
-					socket.getOutputStream(), true);
-		
+			bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			printWriter = new PrintWriter(socket.getOutputStream(), true);
+			
+			System.out.println("Please write 5 steps for the guesser: \n");
+			String hints = "Steps: \n";
+			for(int i=1; i<=5; i+=1){
+				System.out.print(i+": ");
+				hints += i+": "+scanner.nextLine()+"\n";
+			}
+			printWriter.println(hints);
+			System.out.println();
+
 			Runnable sending = new Runnable(){
 				public void run(){
 					send();
@@ -67,7 +68,7 @@ public class Server {
 	}
 
 	public static void main(String[] args) {
-		new Server();
+		new GameClient();
 	}
 
 	public void send(){
@@ -83,7 +84,7 @@ public class Server {
 			try {
 				response = bufferedReader.readLine();
 				if(response != null){
-					System.out.print("Other: "+response+"\n");
+					System.out.print("Server: "+response+"\n");
 				}
 			} catch(Exception e) {
 				System.out.print("Disconnected\n");

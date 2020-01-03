@@ -58,7 +58,7 @@ public class Loader extends JPanel {
 				}
 			}
 			catch(ClassNotFoundException e){
-				System.out.print("Student_ObjectOutputStreamPractice class not found\n");
+				System.out.print("Points class not found\n");
 			}
 			catch(EOFException e){
 				System.out.print("All data read\n");
@@ -67,11 +67,8 @@ public class Loader extends JPanel {
 			fileInputStream.close();
 			objectInputStream.close();
 		}
-		catch(FileNotFoundException e){
-			System.out.print(Constants.fileName+" not found\n");
-		}
-		catch(IOException e){
-			System.out.print("Error making ObjectOutputStream\n");
+		catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	

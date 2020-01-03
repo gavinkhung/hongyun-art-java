@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.net.ServerSocket;
 
-public class Server {
+public class GameServer {
 	
 	private Scanner scanner;
 	private Socket socket;
@@ -16,7 +16,7 @@ public class Server {
 	String echo;
 	String response;
 	
-	public Server() {
+	public GameServer() {
 		scanner = new Scanner(System.in);
 		try {
 			ServerSocket serverSocket = new ServerSocket(port);
@@ -29,10 +29,8 @@ public class Server {
 			e.printStackTrace();
 		}
 		try {
-			bufferedReader = new BufferedReader(
-					new InputStreamReader(socket.getInputStream()));
-			printWriter = new PrintWriter(
-					socket.getOutputStream(), true);
+			bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			printWriter = new PrintWriter(socket.getOutputStream(), true);
 		
 			Runnable sending = new Runnable(){
 				public void run(){
@@ -67,7 +65,7 @@ public class Server {
 	}
 
 	public static void main(String[] args) {
-		new Server();
+		new GameServer();
 	}
 
 	public void send(){
@@ -83,7 +81,7 @@ public class Server {
 			try {
 				response = bufferedReader.readLine();
 				if(response != null){
-					System.out.print("Other: "+response+"\n");
+					System.out.print("Client: "+response+"\n");
 				}
 			} catch(Exception e) {
 				System.out.print("Disconnected\n");

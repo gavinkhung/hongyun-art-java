@@ -1,8 +1,11 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Drawing {
 	
@@ -49,6 +52,12 @@ class DrawingPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 		
+        g.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        for(int i=0; i<colors.length; i+=1){
+			g.setColor(colors[i]);
+        	g.drawString("drawing", 150+(i*100), 100);
+		}
+        
 		for(int i=0; i<colors.length; i+=1){
 			g.setColor(colors[i]);
         	g.drawRect(150+(i*100), 100, 100, 100);
@@ -66,13 +75,22 @@ class DrawingPanel extends JPanel {
 
 		for(int i=0; i<colors.length; i+=1){
 			g.setColor(colors[i]);
-        	g.drawOval(150+(i*100), 400, 100, 100);
+        	g.fillOval(150+(i*100), 400, 100, 100);
 		}
-
-        g.drawString("hello", 100, 100);
-
-        g.setColor(Color.blue);
-        g.drawLine(200, 200, 300, 300);
+		
+		Graphics2D g2 = (Graphics2D) g;
+		
+		for(int i=0; i<colors.length; i+=1){
+			g.setColor(colors[i]);
+			g2.setStroke(new BasicStroke(i+0.0f));
+        	g.drawLine(150+(i*100), 500, 250+(i*100), 600);
+		}
+		
+		for(int i=0; i<colors.length; i+=1){
+			g.setColor(colors[i]);
+			g2.setStroke(new BasicStroke((9-i)+0.0f));
+        	g.drawLine(250+(i*100), 700, 150+(i*100), 600);
+		}
 
     }
 

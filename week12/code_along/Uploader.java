@@ -59,11 +59,8 @@ public class Uploader {
 			
 			System.out.print(Constants.projectDirectorySerialized+Constants.fileName+".txt"+" saved");
 		}
-		catch(FileNotFoundException err){
-			System.out.print(Constants.projectDirectorySerialized+Constants.fileName+".txt"+" not found\n");
-		}
-		catch(IOException err){
-			System.out.print("Error making ObjectOutputStream\n");
+		catch(Exception err){
+			err.printStackTrace();
 		}
 		
 		for(Points line: pointsList) {
