@@ -5,8 +5,8 @@ public class Polymorphism {
 
         Child child = new Child("car", "boy", 16, 1.6);
 
-        System.out.println(person.getHeight());
-        System.out.println(father.getHeight());
+        System.out.println(parent.getHeight());
+        System.out.println(child.getHeight());
 
         Parent ps = new Child("car", "boy", 16, 1.6);
 

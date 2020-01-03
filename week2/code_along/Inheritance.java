@@ -2,7 +2,7 @@ public class Inheritance {
 
     public static void main(String [] args){
         Person person = new Person("gavin", 16, 1.6);
-        Father father = new Father("dad", 44, 1.7);
+        Father father = new Father("mom", "dad", 44, 1.7);
 
         System.out.println(person.getFirstName());
         System.out.println(father.getFirstName());

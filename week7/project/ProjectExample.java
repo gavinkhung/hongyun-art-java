@@ -10,6 +10,7 @@ public class ProjectExample {
 	public ProjectExample() {
 		JFrame frame = new JFrame("ProjectExample");
 		frame.setSize(1200, 800);
+		//600, 400
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -21,15 +22,15 @@ public class ProjectExample {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				
-				g.setColor(Color.green);
-				g.fillRect(0, 500, WIDTH, 100);
+				setBackground(Color.cyan);
 				
+				g.setColor(Color.green);
 				g.setColor(new Color(150, 75, 0));
 				g.fillRect(250, 100, 100, 400);
 				
 				g.setColor(new Color(100, 255, 100));
 				int[] xPoints = {300, 100, 500};
-				int[] yPoints = {0, 400, 400};
+				int[] yPoints = {0, 300, 300};
 				g.fillPolygon(xPoints, yPoints, 3);
 			}
 		};
@@ -38,24 +39,24 @@ public class ProjectExample {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				
+				setBackground(Color.yellow);
+				
 				g.setColor(new Color(255, 0, 100));
 				
-				g.fillRect(150, 150, 300, 150);
+				g.fillRect(150, 50, 300, 150);
 				
 				g.setColor(Color.blue);
-				g.fillRect(160, 160, 140, 130);
-				g.fillRect(310, 160, 130, 130);
+				g.fillRect(160, 60, 140, 130);
+				g.fillRect(310, 60, 130, 130);
 				
 				g.setColor(new Color(255, 100, 100));
-				g.fillRect(100, 300, 400, 100);
-				
+				g.fillRect(100, 200, 400, 100);
 				
 				g.setColor(Color.black);
-				g.fillOval(100, 400, 100, 100);
-				g.fillOval(400, 400, 100, 100);
+				g.fillOval(100, 300, 100, 100);
+				g.fillOval(400, 300, 100, 100);
 				
-				g.setColor(Color.darkGray);
-				g.fillRect(0, 500, WIDTH, 100);
+				
 			}
 		};
 		
@@ -63,8 +64,7 @@ public class ProjectExample {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				
-				g.setColor(Color.darkGray);
-				g.fillRect(0, 500, WIDTH, 100);
+				setBackground(Color.orange);
 				
 				g.setColor(Color.gray);
 				
@@ -87,12 +87,18 @@ public class ProjectExample {
 		
 		JPanel panel4 = new JPanel() {
 			public void paintComponent(Graphics g) {
-				for(int i=0; i<300; i+=50) {
-					g.drawLine(i, 0, i, HEIGHT);
+				for(int x=0; x<600; x+=50) {
+					for(int y=0; y<400; y+=50) {
+						g.setColor(new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256)));
+						g.fillRect(x, y, 50, 50);
+					}
 				}
-				
-				for(int i=0; i<200; i+=50) {
-					g.drawLine(0, i, WIDTH, i);
+				g.setColor(Color.black);
+				for(int i=0; i<600; i+=50) {
+					g.drawLine(i, 0, i, 400);
+				}
+				for(int i=0; i<400; i+=50) {
+					g.drawLine(0, i, 600, i);
 				}
 			}
 		};
