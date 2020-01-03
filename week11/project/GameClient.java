@@ -30,10 +30,13 @@ public class GameClient {
 			String hints = "Steps: \n";
 			for(int i=1; i<=5; i+=1){
 				System.out.print(i+": ");
-				hints += i+": "+scanner.nextLine()+"\n";
+				hints += i+": "+scanner.nextLine();
+				if(i!=5){
+					hints += "\n";
+				}
 			}
 			printWriter.println(hints);
-			System.out.println();
+			System.out.println("");
 
 			Runnable sending = new Runnable(){
 				public void run(){
@@ -84,7 +87,7 @@ public class GameClient {
 			try {
 				response = bufferedReader.readLine();
 				if(response != null){
-					System.out.print("Server: "+response+"\n");
+					System.out.print("Guesser: "+response+"\n");
 				}
 			} catch(Exception e) {
 				System.out.print("Disconnected\n");

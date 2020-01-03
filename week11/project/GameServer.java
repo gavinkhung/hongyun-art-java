@@ -81,7 +81,7 @@ public class GameServer {
 			try {
 				response = bufferedReader.readLine();
 				if(response != null){
-					System.out.print("Client: "+response+"\n");
+					System.out.print("Judge: "+response+"\n");
 				}
 			} catch(Exception e) {
 				System.out.print("Disconnected\n");
