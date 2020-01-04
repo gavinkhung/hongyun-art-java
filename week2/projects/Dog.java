@@ -1,4 +1,4 @@
-public class Aninal
+public class Dog
 {
   private String name;
   private int age;
@@ -24,5 +24,9 @@ public class Aninal
   public String getFood()
   {
    return favoriteFood; 
+  }
+
+  public void bark(){
+    System.out.println("woof");
   }
 }

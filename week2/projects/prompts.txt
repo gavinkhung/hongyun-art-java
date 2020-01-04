@@ -1,0 +1,8 @@
+1. Create a dog class
+- add name, age, and a favoriteFood fields
+- add getters for all fields
+- add a bark method that prints "woof"
+
+2. Create a corgi class
+- is a subclass of the dog class
+- override the bark method to print "pet me"
